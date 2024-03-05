@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_012039) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_05_021554) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip_code"
+    t.string "street"
+    t.string "complement"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "ibge_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "citizens", force: :cascade do |t|
     t.string "full_name"
     t.string "cpf"
@@ -21,6 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_012039) do
     t.string "status", default: "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "address_id"
+    t.index ["address_id"], name: "index_citizens_on_address_id"
   end
 
+  add_foreign_key "citizens", "addresses"
 end

@@ -47,4 +47,7 @@ RSpec.describe Citizen, type: :model do
   end
 
   it { is_expected.to validate_presence_of(:image) }
+
+  it { is_expected.to belong_to(:address) }
+  it { is_expected.to validate_presence_of(:address) }
 end
