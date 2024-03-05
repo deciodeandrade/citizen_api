@@ -40,7 +40,6 @@ class CitizensController < ApplicationController
 
     def citizen_params
       params.require(:citizen).permit(
-        :id,
         :full_name,
         :cpf,
         :cns,

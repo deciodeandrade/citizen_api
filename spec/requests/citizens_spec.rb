@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "/citizens", type: :request do
   let(:valid_attributes) {
-    FactoryBot.attributes_for(:citizen, address_attributes: attributes_for(:address))
+    attributes_for(:citizen, address_attributes: attributes_for(:address))
   }
 
   let(:invalid_attributes) {
-    FactoryBot.attributes_for(:citizen, email: nil, address: nil)
+    attributes_for(:citizen, email: nil, address: nil)
   }
 
   let(:valid_headers) {
