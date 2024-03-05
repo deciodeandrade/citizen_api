@@ -14,4 +14,6 @@ class Citizen < ApplicationRecord
   validates :address, presence: true
 
   enum status: { active: 'active',  inactive: 'inactive' }
+
+  accepts_nested_attributes_for :address, allow_destroy: true
 end
