@@ -19,7 +19,7 @@ class CitizensController < ApplicationController
 
     if @citizen.save
       CitizenMailer.registration_notification(@citizen).deliver_now
-      #send_sms_notification(@citizen)
+      send_sms_notification(@citizen)
 
       render json: @citizen, status: :created, location: @citizen
     else
@@ -31,7 +31,7 @@ class CitizensController < ApplicationController
   def update
     if @citizen.update(citizen_params)
       CitizenMailer.registration_notification(@citizen).deliver_now
-      #send_sms_notification(@citizen)
+      send_sms_notification(@citizen)
 
       render json: @citizen
     else
@@ -67,13 +67,14 @@ class CitizensController < ApplicationController
     end
 
     def send_sms_notification(citizen)
-      account_sid = 'YOUR_TWILIO_ACCOUNT_SID'
-      auth_token = 'YOUR_TWILIO_AUTH_TOKEN'
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+      twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
+      
       client = Twilio::REST::Client.new(account_sid, auth_token)
-  
       message = client.messages.create(
         body: 'Seu cadastro foi atualizado/criado com sucesso!',
-        from: 'YOUR_TWILIO_PHONE_NUMBER',
+        from: twilio_phone_number,
         to: citizen.phone
       )
     end
