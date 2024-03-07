@@ -41,6 +41,8 @@ gem "bootsnap", require: false
 
  gem 'twilio-ruby', '~> 6.12.0'
 
+ gem 'rails-observers'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
