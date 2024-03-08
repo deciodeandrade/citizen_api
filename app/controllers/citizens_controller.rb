@@ -3,7 +3,7 @@ class CitizensController < ApplicationController
 
   # GET /citizens
   def index
-    @citizens = Citizen.all
+    @citizens = apply_filters(Citizen, filter_params)
 
     render json: @citizens
   end
@@ -34,29 +34,52 @@ class CitizensController < ApplicationController
   end
 
   private
-    def set_citizen
-      @citizen = Citizen.find(params[:id])
-    end
 
-    def citizen_params
-      params.require(:citizen).permit(
-        :full_name,
-        :cpf,
-        :cns,
-        :email,
-        :birth_date,
-        :phone,
-        :status,
-        :image,
-        address_attributes: [
-          :id,
-          :zip_code,
-          :street,
-          :neighborhood,
-          :city,
-          :state,
-          :ibge_code
-        ]
-      )
-    end
+  def set_citizen
+    @citizen = Citizen.find(params[:id])
+  end
+
+  def citizen_params
+    params.require(:citizen).permit(
+      :full_name,
+      :cpf,
+      :cns,
+      :email,
+      :birth_date,
+      :phone,
+      :status,
+      :image,
+      address_attributes: [
+        :id,
+        :zip_code,
+        :street,
+        :neighborhood,
+        :city,
+        :state,
+        :ibge_code
+      ]
+    )
+  end
+
+  def filter_params
+    params.require(:filter).permit(
+      :full_name,
+      :cpf,
+      :cns,
+      :email,
+      :status,
+      :zip_code
+    )
+  end
+
+  def apply_filters(model, filter_params)
+    list = model.by_full_name(filter_params[:full_name])
+                  .by_cpf(filter_params[:cpf])
+                  .by_cns(filter_params[:cns])
+                  .by_email(filter_params[:email])
+                  .by_status(filter_params[:status])
+                  .by_zip_code(filter_params[:zip_code])
+
+    list
+  end
 end
