@@ -1,4 +1,6 @@
-class CitizenObserver < ActiveRecord::Observer
+class Citizen::Observer < ActiveRecord::Observer
+  observe :citizen
+
   def after_create(citizen)
     CitizenMailer.registration_notification(citizen).deliver_later
     ::Citizen::SmsSender.registration_notification(citizen).deliver_later
