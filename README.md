@@ -1,24 +1,9 @@
-# README
+Começando:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Após clonar o projeto na sua máquina... Através do terminal navegue até o diretório do projeto e...
 
-Things you may want to cover:
+Execute: bundle
 
-* Ruby version
+Execute: rails db:create
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Execute: rails db:migrate
