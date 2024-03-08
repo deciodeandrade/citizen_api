@@ -5,11 +5,11 @@ class SmsSender
   end
 
   def deliver_now
-    SmsSend.new(body: body, to: to).call
+    SendSms.new(body: body, to: to).call
   end
 
   def deliver_later
-    SmsSenderJob.perform_later(body: body, to: to)
+    SmsSendJob.perform_later(body: body, to: to)
   end
 
   private
