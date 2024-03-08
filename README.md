@@ -1,9 +1,19 @@
-Começando:
+## Iniciando o Projeto
 
-Após clonar o projeto na sua máquina... Através do terminal navegue até o diretório do projeto e...
+Após clonar o projeto em sua máquina, navegue até o diretório do projeto no terminal e siga as etapas abaixo:
 
-Execute: bundle
+1. Execute: `bundle install`
+2. Execute: `rails db:create`
+3. Execute: `rails db:migrate`
+4. Execute: `rails s`
 
-Execute: rails db:create
+Para parar o servidor, pressione `Ctrl + C` no terminal.
 
-Execute: rails db:migrate
+---
+
+## Executando o Sidekiq Manualmente
+
+Para executar o Sidekiq manualmente, use o comando:
+
+```bash
+bundle exec sidekiq --environment development --config config/sidekiq.yml
