@@ -5,7 +5,7 @@ class Sms::Scheduler
   end
 
   def deliver_now
-    ::Sms::SendSms.new(body: body, to: to).call
+    ::Sms::Send.new(body: body, to: to).call
   end
 
   def deliver_later
