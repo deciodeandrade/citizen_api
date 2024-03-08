@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 
  gem "sidekiq"
 
+  gem 'will_paginate', '~> 4.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'

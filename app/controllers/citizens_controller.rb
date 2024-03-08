@@ -80,6 +80,6 @@ class CitizensController < ApplicationController
                   .by_status(filter_params[:status])
                   .by_zip_code(filter_params[:zip_code])
 
-    list
+    list.paginate(page: params[:page], per_page: 30)
   end
 end
