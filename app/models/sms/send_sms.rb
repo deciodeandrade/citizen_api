@@ -1,4 +1,4 @@
-class SendSms
+class Sms::SendSms
   def initialize(body:, to:)
     @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
     @from = TWILIO_PHONE_NUMBER

@@ -3,6 +3,6 @@ class Citizen::SmsSender
     body = "#{citizen.full_name}, seu cadastro foi atualizado/criado com sucesso!"
     to = citizen.phone
 
-    Scheduler.new(body: body, to: to)
+    ::Sms::Scheduler.new(body: body, to: to)
   end
 end
