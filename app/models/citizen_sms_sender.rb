@@ -3,6 +3,6 @@ class CitizenSmsSender
     body = "#{citizen.full_name}, seu cadastro foi atualizado/criado com sucesso!"
     to = citizen.phone
 
-    SmsSender.new(body: body, to: to)
+    Scheduler.new(body: body, to: to)
   end
 end

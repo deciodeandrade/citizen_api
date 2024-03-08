@@ -1,4 +1,4 @@
-class SmsSender
+class Scheduler
   def initialize(body:, to:)
     @body = body
     @to = to
