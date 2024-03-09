@@ -3,11 +3,11 @@ class Citizen::Observer < ActiveRecord::Observer
 
   def after_create(citizen)
     CitizenMailer.send_registration_creation_notification(citizen).deliver_later
-    ::Citizen::Sms::Sender.registration_notification(citizen).deliver_later
+    ::Citizen::Sms::Sender.send_registration_creation_notification(citizen).deliver_later
   end
 
   def after_update(citizen)
     CitizenMailer.send_registration_update_notification(citizen).deliver_later
-    ::Citizen::Sms::Sender.registration_notification(citizen).deliver_later
+    ::Citizen::Sms::Sender.send_registration_update_notification(citizen).deliver_later
   end
 end
