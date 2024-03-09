@@ -9,7 +9,7 @@ class Sms::Scheduler
   end
 
   def deliver_later
-    SmsSendJob.perform_later(body: body, to: to)
+    SendSmsJob.perform_later(body: body, to: to)
   end
 
   private

@@ -1,4 +1,4 @@
-class SmsSendJob < ApplicationJob
+class SendSmsJob < ApplicationJob
   queue_as :default
 
   def perform(body:, to:)
