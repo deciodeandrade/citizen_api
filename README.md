@@ -1,24 +1,19 @@
-# README
+## Iniciando o Projeto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Após clonar o projeto em sua máquina, navegue até o diretório do projeto no terminal e siga as etapas abaixo:
 
-Things you may want to cover:
+1. Execute: `bundle install`
+2. Execute: `rails db:create`
+3. Execute: `rails db:migrate`
+4. Execute: `rails s`
 
-* Ruby version
+Para parar o servidor, pressione `Ctrl + C` no terminal.
 
-* System dependencies
+---
 
-* Configuration
+## Executando o Sidekiq Manualmente
 
-* Database creation
+Para executar o Sidekiq manualmente, use o comando:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bundle exec sidekiq --environment development --config config/sidekiq.yml
